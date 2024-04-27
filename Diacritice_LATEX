@@ -1,0 +1,29 @@
+diacritice = {
+    'ă': '\\u{a}',
+    'Ă': '\\^{A}',
+    'â': '\\^{a}',
+    'Â': '\\^{A}',
+    'ș': '\\c{s}',
+    'Ș': '\\c{S}',
+    'ț': '\\c{t}',
+    'Ț': '\\c{T}',
+    'î': '\\^{i}',
+    'Î': '\\^{I}',
+}
+
+def convert_latex(text):
+    text_final = []
+    cuvinte = text.split(" ")
+    for cuvant in cuvinte:
+        cuvant_final = ""
+        for i in cuvant:
+            if i in diacritice:
+                cuvant_final += diacritice[i]
+            else:
+                cuvant_final += i
+        text_final.append(cuvant_final)
+    return ' '.join(text_final)
+    
+text = input()
+text_latex = convert_latex(text)
+print(text_latex)
